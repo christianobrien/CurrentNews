@@ -136,6 +136,11 @@
 					AAC271661CBBE2B300EA146A = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = HUF74ZC968;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -344,6 +349,7 @@
 			baseConfigurationReference = C90F59C323DC05110DB83367 /* Pods-Current News.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Current News/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "CO.Current-News";
@@ -356,6 +362,7 @@
 			baseConfigurationReference = DCBFFAACD04270E0087DE5D2 /* Pods-Current News.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Current News/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "CO.Current-News";

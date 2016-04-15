@@ -3,6 +3,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Sections-->
@@ -77,27 +79,91 @@
         <scene sceneID="cSZ-ot-gt4">
             <objects>
                 <tableViewController id="He3-6Z-qoL" customClass="HomeVC" customModule="Current_News" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="wUh-p7-NrN">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="249" sectionHeaderHeight="28" sectionFooterHeight="28" id="wUh-p7-NrN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" textLabel="lHf-Rd-nt8" style="IBUITableViewCellStyleDefault" id="vGB-fg-OP2">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="storyCell" rowHeight="500" id="c2h-MY-htu" customClass="StoryTVCell" customModule="Current_News" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vGB-fg-OP2" id="L8f-fm-1my">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c2h-MY-htu" id="FEx-5c-WNa">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="499.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lHf-Rd-nt8">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uQs-sI-Mg1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="288"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="288" id="0xl-KG-LBi"/>
+                                            </constraints>
+                                        </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Su-8V-jWC">
+                                            <rect key="frame" x="0.0" y="296" width="600" height="188"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4T-NA-e8J">
+                                                    <rect key="frame" x="60" y="8" width="480" height="65"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="65" id="K9n-e4-Ezr"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Title goes here">
+                                                            <attributes>
+                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <font key="NSFont" size="24" name="TimesNewRomanPS-BoldMT"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mlz-AX-6a1" userLabel="SpaceBetweenArticles">
+                                                    <rect key="frame" x="0.0" y="180" width="600" height="8"/>
+                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufj-O4-wJN">
+                                                    <rect key="frame" x="60" y="81" width="480" height="90"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="90" id="9U5-Bi-aSb"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Abstract">
+                                                            <attributes>
+                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <font key="NSFont" size="18" name="TimesNewRomanPS-ItalicMT"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="ufj-O4-wJN" firstAttribute="centerX" secondItem="0Su-8V-jWC" secondAttribute="centerX" id="7bZ-3a-cKH"/>
+                                                <constraint firstItem="ufj-O4-wJN" firstAttribute="width" secondItem="0Su-8V-jWC" secondAttribute="width" multiplier="0.8" id="QMw-WS-kyP"/>
+                                                <constraint firstItem="ufj-O4-wJN" firstAttribute="top" secondItem="k4T-NA-e8J" secondAttribute="bottom" constant="8" id="Z4g-ux-ViV"/>
+                                                <constraint firstItem="k4T-NA-e8J" firstAttribute="width" secondItem="0Su-8V-jWC" secondAttribute="width" multiplier="0.8" id="eGd-PT-jmM"/>
+                                                <constraint firstItem="k4T-NA-e8J" firstAttribute="top" secondItem="0Su-8V-jWC" secondAttribute="top" constant="8" id="iAO-Qt-7gd"/>
+                                                <constraint firstItem="k4T-NA-e8J" firstAttribute="centerX" secondItem="0Su-8V-jWC" secondAttribute="centerX" id="q5d-4A-rSR"/>
+                                                <constraint firstAttribute="height" constant="188" id="zYI-Mw-ieD"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uQs-sI-Mg1" firstAttribute="centerX" secondItem="FEx-5c-WNa" secondAttribute="centerX" id="1Gr-7O-fP0" userLabel="imageCenterX"/>
+                                        <constraint firstItem="uQs-sI-Mg1" firstAttribute="width" secondItem="FEx-5c-WNa" secondAttribute="width" id="Hee-fu-Y75" userLabel="imageWidth"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="0Su-8V-jWC" secondAttribute="bottom" constant="8" id="Nyf-js-8PF" userLabel="containerToBottomLayout"/>
+                                        <constraint firstAttribute="topMargin" secondItem="uQs-sI-Mg1" secondAttribute="top" constant="8" id="XYM-8i-8aW" userLabel="imageToTopMargin"/>
+                                        <constraint firstItem="0Su-8V-jWC" firstAttribute="centerX" secondItem="FEx-5c-WNa" secondAttribute="centerX" id="h2s-Cg-dOc" userLabel="containerCenterX"/>
+                                        <constraint firstItem="0Su-8V-jWC" firstAttribute="width" secondItem="FEx-5c-WNa" secondAttribute="width" id="hwY-iL-EBl" userLabel="containerWidth"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="articleAbstract" destination="ufj-O4-wJN" id="jRd-Au-5lr"/>
+                                    <outlet property="articleImage" destination="uQs-sI-Mg1" id="Eal-y5-3Lz"/>
+                                    <outlet property="articleTitle" destination="k4T-NA-e8J" id="bOg-Dj-U6R"/>
+                                    <outlet property="titleContainer" destination="0Su-8V-jWC" id="5Hl-fZ-KXP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

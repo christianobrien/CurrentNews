@@ -30,11 +30,12 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         getDataFromNYT(section)
         labelForNavBar.text = section
         
+        self.storiesTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLineEtched
+        
     }
     
     func getDataFromNYT(section: String) {
         let nyTimesTopStoriesURL : String = "http://api.nytimes.com/svc/topstories/v1/\(section).json?api-key=\(topStoriesAPIKey)"
-        print("\(nyTimesTopStoriesURL)")
         
         Alamofire.request(.GET, nyTimesTopStoriesURL).responseData { (response) in
             if let data = response.data {
@@ -48,20 +49,27 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = storiesTableView.dequeueReusableCellWithIdentifier("storyCell")
-        let largeImage = stories[indexPath.row]["multimedia"][4]["url"].stringValue
-        cell?.imageView?.image = nil
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath ) -> UITableViewCell{
         
-        let filter = AspectScaledToFillSizeFilter(size: CGSize(width: 100, height: 100))
-        let url = NSURL(string: "\(largeImage)")
-        cell?.imageView?.af_setImageWithURL(url!, placeholderImage: placeHolderImage, filter: filter, imageTransition: .CrossDissolve(0.9), runImageTransitionIfCached: false, completion: { (response) in
-            cell?.setNeedsLayout()
+        let cell = storiesTableView.dequeueReusableCellWithIdentifier("storyCell") as! StoryTVCell
+        let imageForCell = stories[indexPath.row]["multimedia"][4]["url"].stringValue
+
+//        let widthForImage = stories[indexPath.row]["multimedia"][4]["width"].intValue
+//        let heightForImage = stories[indexPath.row]["multimedia"][4]["height"].intValue
+//        let filter = ScaledToSizeFilter(size: CGSize(width: widthForImage, height: heightForImage))
+        
+        let url = NSURL(string: "\(imageForCell)")
+        cell.articleImage?.af_setImageWithURL(url!, placeholderImage: placeHolderImage, filter: nil, imageTransition: .CrossDissolve(0.9), runImageTransitionIfCached: false, completion: { (response) in
+            cell.setNeedsLayout()
         })
+
+        cell.articleImage?.contentMode = UIViewContentMode.ScaleAspectFill
+
+        cell.articleTitle?.text = stories[indexPath.row]["title"].stringValue
+        cell.articleAbstract?.text = stories[indexPath.row]["abstract"].stringValue
         
-        cell?.textLabel?.text = stories[indexPath.row]["title"].stringValue
         
-        return cell!
+        return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,12 +93,10 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             let displayStoryVC = segue.destinationViewController as? WebVC
             displayStoryVC?.storyToLoad = sender as? NSURLRequest
         }
-        if segue.identifier == "toSections" {
-        
-        }
     }
     
-    
-    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 500
+    }
     
 }

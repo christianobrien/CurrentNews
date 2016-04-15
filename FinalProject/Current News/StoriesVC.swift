@@ -40,5 +40,12 @@ class StoriesVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func unwindToHome(sender: UIStoryboardSegue){
+        
+        self.navigationController?.popViewControllerAnimated(true)
+        
+    }
+    
+    
     
 }
