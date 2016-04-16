@@ -18,16 +18,18 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     let topStoriesAPIKey : String = "b6e77db24e759e30453d3ac9baa2349e:11:74951692"
-    let placeHolderImage = UIImage(named: "placeholder.png")
-    var refreshControl : UIRefreshControl?
+    let placeholderImage = UIImage(named: "placeholder.png")
+    let missingImage = UIImage(named: "_NewsIcon.png")
+    var refreshStories : UIRefreshControl?
+    
+    override func viewDidAppear(animated: Bool) {
+        // need to get data here so user doesn't wait for images to populate
+        getDataFromNYT(section)
+    }
     
     override func viewDidLoad() {
         storiesTableView.delegate = self
         storiesTableView.dataSource = self
-        refreshControl = UIRefreshControl()
-        refreshControl?.addTarget(self, action: #selector(HomeVC.getDataFromNYT(_:)), forControlEvents: .ValueChanged)
-        //        navBarTitle.text = ""
-        getDataFromNYT(section)
         labelForNavBar.text = section
         
         self.storiesTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLineEtched
@@ -42,7 +44,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 let json = JSON(data: data)
                 self.stories = json["results"].arrayValue
                 dispatch_async(dispatch_get_main_queue(), {
-                    self.refreshControl?.endRefreshing()
                     self.storiesTableView.reloadData()
                 })
             }
@@ -53,17 +54,22 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let cell = storiesTableView.dequeueReusableCellWithIdentifier("storyCell") as! StoryTVCell
         let imageForCell = stories[indexPath.row]["multimedia"][4]["url"].stringValue
-        
         let url = NSURL(string: "\(imageForCell)")
-        cell.articleImage?.af_setImageWithURL(url!, placeholderImage: placeHolderImage, filter: nil, imageTransition: .CrossDissolve(0.9), runImageTransitionIfCached: false, completion: { (response) in
+        
+        if imageForCell != "" {
+        cell.articleImage?.af_setImageWithURL(url!, placeholderImage: placeholderImage, filter: nil, imageTransition: .CrossDissolve(0.05), runImageTransitionIfCached: false, completion: { (response) in
             cell.setNeedsLayout()
         })
+        } else {
+            cell.articleImage?.image = missingImage
+        }
 
+        
+        
         cell.articleImage?.contentMode = UIViewContentMode.ScaleAspectFill
 
         cell.articleTitle?.text = stories[indexPath.row]["title"].stringValue
         cell.articleAbstract?.text = stories[indexPath.row]["abstract"].stringValue
-        
         
         return cell
     }
