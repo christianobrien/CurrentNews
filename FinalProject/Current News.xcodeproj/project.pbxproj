@@ -135,9 +135,12 @@
 				TargetAttributes = {
 					AAC271661CBBE2B300EA146A = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = HUF74ZC968;
+						DevelopmentTeam = N2AB5HQ9E2;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -352,7 +355,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Current News/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CO.Current-News";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CO.CurrentNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -365,7 +368,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Current News/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "CO.Current-News";
+				PRODUCT_BUNDLE_IDENTIFIER = com.CO.CurrentNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -55,15 +55,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Sections" id="tqY-ib-Mf9">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="thH-Ym-phl">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EJt-bp-X2N">
-                                <rect key="frame" x="20" y="7" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <state key="normal" title="Cancel"/>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="cqa-TZ-i4b">
                             <connections>
-                                <action selector="cancelPressed:" destination="ebf-an-kkg" id="fee-a0-g3D"/>
+                                <action selector="cancelPressed:" destination="ebf-an-kkg" id="FKp-JD-L3n"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -92,7 +86,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uQs-sI-Mg1">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="288"/>
+                                            <rect key="frame" x="0.0" y="8" width="600" height="288"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="288" id="0xl-KG-LBi"/>
                                             </constraints>
@@ -153,7 +147,7 @@
                                         <constraint firstItem="uQs-sI-Mg1" firstAttribute="centerX" secondItem="FEx-5c-WNa" secondAttribute="centerX" id="1Gr-7O-fP0" userLabel="imageCenterX"/>
                                         <constraint firstItem="uQs-sI-Mg1" firstAttribute="width" secondItem="FEx-5c-WNa" secondAttribute="width" id="Hee-fu-Y75" userLabel="imageWidth"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="0Su-8V-jWC" secondAttribute="bottom" constant="8" id="Nyf-js-8PF" userLabel="containerToBottomLayout"/>
-                                        <constraint firstAttribute="topMargin" secondItem="uQs-sI-Mg1" secondAttribute="top" constant="8" id="XYM-8i-8aW" userLabel="imageToTopMargin"/>
+                                        <constraint firstAttribute="topMargin" secondItem="uQs-sI-Mg1" secondAttribute="top" id="XYM-8i-8aW" userLabel="imageToTopMargin"/>
                                         <constraint firstItem="0Su-8V-jWC" firstAttribute="centerX" secondItem="FEx-5c-WNa" secondAttribute="centerX" id="h2s-Cg-dOc" userLabel="containerCenterX"/>
                                         <constraint firstItem="0Su-8V-jWC" firstAttribute="width" secondItem="FEx-5c-WNa" secondAttribute="width" id="hwY-iL-EBl" userLabel="containerWidth"/>
                                     </constraints>
@@ -173,24 +167,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="yh1-7N-JvT">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="7kb-IT-lEG">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="headTruncation" hasAttributedTitle="YES" id="fKg-Jo-HDW">
-                                <rect key="frame" x="20" y="7" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Sections">
-                                            <attributes>
-                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
-                                </state>
-                                <connections>
-                                    <action selector="sectionButtonClicked:" destination="He3-6Z-qoL" eventType="touchUpInside" id="ala-zg-TWi"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="Sections" id="PPa-iz-dV9">
+                            <connections>
+                                <action selector="sectionButtonClicked:" destination="He3-6Z-qoL" id="CMP-a1-PWO"/>
+                            </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="b56-7S-JFA">
                             <rect key="frame" x="234" y="5.5" width="132" height="33"/>

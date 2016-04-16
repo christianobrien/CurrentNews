@@ -53,10 +53,6 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         let cell = storiesTableView.dequeueReusableCellWithIdentifier("storyCell") as! StoryTVCell
         let imageForCell = stories[indexPath.row]["multimedia"][4]["url"].stringValue
-
-//        let widthForImage = stories[indexPath.row]["multimedia"][4]["width"].intValue
-//        let heightForImage = stories[indexPath.row]["multimedia"][4]["height"].intValue
-//        let filter = ScaledToSizeFilter(size: CGSize(width: widthForImage, height: heightForImage))
         
         let url = NSURL(string: "\(imageForCell)")
         cell.articleImage?.af_setImageWithURL(url!, placeholderImage: placeHolderImage, filter: nil, imageTransition: .CrossDissolve(0.9), runImageTransitionIfCached: false, completion: { (response) in
