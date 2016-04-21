@@ -14,7 +14,7 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var section : String = "home" {
         didSet {
             getDataFromNYT(section)
-            labelForNavBar.text = section
+            setTitleForNavBar()
         }
     }
     let topStoriesAPIKey : String = "b6e77db24e759e30453d3ac9baa2349e:11:74951692"
@@ -30,10 +30,38 @@ class HomeVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         storiesTableView.delegate = self
         storiesTableView.dataSource = self
-        labelForNavBar.text = section
+        setTitleForNavBar()
         
         self.storiesTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLineEtched
         
+    }
+    
+    func setTitleForNavBar() {
+        if section == "home" {
+            labelForNavBar.text = "Top Stories"
+        } else if section == "world" {
+            labelForNavBar.text = "World"
+        } else if section == "politics" {
+            labelForNavBar.text = "Politics"
+        } else if section == "technology" {
+            labelForNavBar.text = "Technology"
+        } else if section == "travel" {
+            labelForNavBar.text = "Travel"
+        } else if section == "health" {
+            labelForNavBar.text = "Health"
+        } else if section == "sports" {
+            labelForNavBar.text = "Sports"
+        } else if section == "realestate" {
+            labelForNavBar.text = "Real Estate"
+        } else if section == "magazine" {
+            labelForNavBar.text = "Magazine"
+        } else if section == "arts" {
+            labelForNavBar.text = "Arts"
+        } else if section == "opinion" {
+            labelForNavBar.text = "Opinion"
+        } else {
+            labelForNavBar.text = section
+        }
     }
     
     func getDataFromNYT(section: String) {
